@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>dev.twuni</groupId>
+  <artifactId>mtls4j</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+
+  <name>mtls4j</name>
+  <description>Make requests to TLS services that require a client certificate.</description>
+  <url>https://mtls4j.twuni.dev</url>
+
+  <developers>
+    <developer>
+      <id>twuni</id>
+      <name>Devin Canterberry</name>
+      <organization>Twuni</organization>
+      <organizationUrl>https://twuni.org/</organizationUrl>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <distribution>repo</distribution>
+      <name>MIT</name>
+      <url>https://mit-license.org/</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:twuni/mtls4j.git</connection>
+    <developerConnection>scm:git:git@github.com:twuni/mtls4j.git</developerConnection>
+    <url>https://github.com/twuni/mtls4j</url>
+  </scm>
+
+  <repositories>
+    <repository>
+      <id>twuni</id>
+      <layout>default</layout>
+      <name>Twuni Software Releases</name>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <url>https://twuni.org/maven/repository/libs-release</url>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>twuni</id>
+      <layout>default</layout>
+      <name>Twuni Software Releases</name>
+      <uniqueVersion>false</uniqueVersion>
+      <url>file://${project.build.directory}/repository/libs-release</url>
+    </repository>
+  </distributionManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <encoding>UTF-8</encoding>
+            <source>17</source>
+            <target>17</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <configuration>
+            <useAgent>true</useAgent>
+          </configuration>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-source-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
