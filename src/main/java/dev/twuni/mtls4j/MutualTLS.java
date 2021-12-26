@@ -1,6 +1,8 @@
 package dev.twuni.mtls4j;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.security.DrbgParameters;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -24,6 +26,8 @@ public class MutualTLS {
   private static final String ALIAS_CLIENT = "client";
   private static final String ALIAS_SERVER = "server";
   private static final String DEFAULT_PASSPHRASE = "nevergonnagiveyouup";
+  private static final String DRBG = "DRBG";
+  private static final String UTF8 = "UTF-8";
 
   private final Certificate[] clientCertificateChain;
   private final PrivateKey clientKey;
@@ -134,14 +138,8 @@ public class MutualTLS {
     return keyStore;
   }
 
-  private SecureRandom secureRandom() {
-    try {
-      return SecureRandom.getInstanceStrong();
-    } catch (NoSuchAlgorithmException impossible) {
-      // Surely SecureRandom will always have a "strong" implementation. Right?
-    }
-
-    return null;
+  private SecureRandom secureRandom() throws NoSuchAlgorithmException {
+    return SecureRandom.getInstance(DRBG, DrbgParameters.instantiation(256, DrbgParameters.Capability.PR_AND_RESEED, getClass().getName().getBytes(Charset.forName(UTF8))));
   }
 
   private TrustManager[] trustManagers() {
