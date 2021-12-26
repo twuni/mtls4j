@@ -30,11 +30,11 @@ If you are using Maven, add the following section to your POM's `<dependencies>`
 <dependency>
   <groupId>dev.twuni</groupId>
   <artifactId>mtls4j</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
 </dependency>
 ```
 
-For other Maven-compatible package managers, use the spec `dev.twuni:mtls4j:0.0.1`.
+For other Maven-compatible package managers, use the spec `dev.twuni:mtls4j:0.0.2`.
 
 ## Usage
 

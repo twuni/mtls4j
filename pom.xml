@@ -60,7 +60,7 @@
       <layout>default</layout>
       <name>Twuni Software Releases</name>
       <uniqueVersion>false</uniqueVersion>
-      <url>file://${project.build.directory}/repository/libs-release</url>
+      <url>file:///home/user/Projects/buckets/twuni.org/maven/repository/libs-release</url>
     </repository>
   </distributionManagement>
 
